@@ -6,44 +6,45 @@ describe('basic test', () => {
     expect(result).toBe(3);
   });
   test('it sums big integers', () => {
-    const result = add(1000, 2000);
-    expect(result).toBe(3000);
+    console.log(Number.MAX_SAFE_INTEGER);
+
+    const result = add(9007199254740991, 1);
+    expect(result).toBe(9007199254740992);
   });
   test('it sums negative integers', () => {
-    const result = add(1000, -2000);
-    expect(result).toBe(-1000);
+    const result = add(10, -2);
+    expect(result).toBe(8);
   });
   test('it sums 0', () => {
     const random = Math.random();
     const result = add(random, 0);
-
     expect(result).toBe(random);
   });
 });
 
 describe('decimals test', () => {
   test('it sums decimals', () => {
-    const result = add(10.5, 0.5);
-    expect(result).toBe(11);
+    const result = add(0.1, 0.4);
+    expect(result).toBe(0.5);
   });
   test('it sums decimals', () => {
     const result = add(0.1, 0.2);
     expect(result).toBeCloseTo(0.3, 6);
   });
   test('it sums decimals', () => {
-    const result = add(-0.1, -0.2);
-    expect(result).toBeCloseTo(-0.3, 6);
+    const result = add(0.1, -0.2);
+    expect(result).toBeCloseTo(-0.1, 6);
   });
 });
 
 describe('not number inputs', () => {
   test('it sums numbers as strings', () => {
-    const result = add('10.5', 0.5);
-    expect(result).toBe(11);
+    const result = add('0.1', -0.2);
+    expect(result).toBeCloseTo(-0.1, 6);
   });
 
   test('it returns NaN', () => {
-    const result = add('hola 10.5', 0.5);
+    const result = add('not a 0.1', -0.2);
     expect(result).toBe(NaN);
   });
   test('booleans 1', () => {
