@@ -1,4 +1,4 @@
-describe('basic examples', () => {
+describe.skip('basic examples', () => {
     describe('passing test examples', () => {
       test('this test pass', () => {
         let a = 2;

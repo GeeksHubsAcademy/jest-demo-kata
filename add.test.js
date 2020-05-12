@@ -56,3 +56,22 @@ describe('not number inputs', () => {
     expect(result).toBe(0);
   });
 });
+
+
+describe.only('bach test', () => {
+  test.each([[1,2,3], [-1,-2,-3], [-1000,500,-500], [0.1,0.2,0.3]])('add', (a,b,expected) => {
+    expect(add(a,b)).toBeCloseTo(expected, 12);
+  })
+ test.each([1, 2, -1000, 0.3])('%# add %i sum 0', (a) => {
+   expect(add(a, 0)).toBeCloseTo(a, 12);
+ });
+  test.each`
+    a    | b    | expected
+    ${'1'} | ${1} | ${2}
+    ${1} | ${2} | ${3}
+    ${2} | ${1} | ${3}
+  `('%# add %i sum 0', ({a, b, expected}) => {
+    expect(add(a, b)).toBeCloseTo(expected, 12);
+  });
+
+});
